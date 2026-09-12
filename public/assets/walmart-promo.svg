@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="walmartBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0053a0" />
+      <stop offset="50%" stop-color="#0071dc" />
+      <stop offset="100%" stop-color="#043a75" />
+    </linearGradient>
+    <linearGradient id="cardGleam" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.25" />
+      <stop offset="60%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#001833" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="600" height="360" rx="16" fill="#f1f5f9" />
+  
+  <!-- Subtle pattern dots -->
+  <g opacity="0.08" fill="#0071dc">
+    <circle cx="40" cy="40" r="3" />
+    <circle cx="80" cy="40" r="3" />
+    <circle cx="120" cy="40" r="3" />
+    <circle cx="480" cy="40" r="3" />
+    <circle cx="520" cy="40" r="3" />
+    <circle cx="560" cy="40" r="3" />
+    <circle cx="40" cy="320" r="3" />
+    <circle cx="80" cy="320" r="3" />
+    <circle cx="520" cy="320" r="3" />
+    <circle cx="560" cy="320" r="3" />
+  </g>
+
+  <!-- Card Container -->
+  <g transform="translate(60, 40)" filter="url(#cardShadow)">
+    <rect width="480" height="280" rx="20" fill="url(#walmartBg)" />
+    <rect width="480" height="280" rx="20" fill="url(#cardGleam)" />
+    <rect width="480" height="280" rx="20" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.3" />
+
+    <!-- Walmart Spark Logo -->
+    <g transform="translate(50, 48)">
+      <!-- 6 spark petals -->
+      <g fill="#ffc220">
+        <rect x="-4" y="-24" width="8" height="18" rx="4" transform="rotate(0)" />
+        <rect x="-4" y="-24" width="8" height="18" rx="4" transform="rotate(60)" />
+        <rect x="-4" y="-24" width="8" height="18" rx="4" transform="rotate(120)" />
+        <rect x="-4" y="-24" width="8" height="18" rx="4" transform="rotate(180)" />
+        <rect x="-4" y="-24" width="8" height="18" rx="4" transform="rotate(240)" />
+        <rect x="-4" y="-24" width="8" height="18" rx="4" transform="rotate(300)" />
+      </g>
+      <text x="32" y="8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="800" fill="#ffffff" letter-spacing="-0.5">Walmart</text>
+    </g>
+
+    <!-- Gift Card Pill Tag -->
+    <g transform="translate(330, 40)">
+      <rect width="105" height="30" rx="15" fill="#ffffff" fill-opacity="0.18" />
+      <text x="52" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="1">GIFT CARD</text>
+    </g>
+
+    <!-- EMV Chip Accent -->
+    <g transform="translate(50, 115)">
+      <rect width="44" height="34" rx="6" fill="#ffd15c" stroke="#d49b20" stroke-width="1.5" />
+      <line x1="0" y1="17" x2="44" y2="17" stroke="#b88310" stroke-width="1" />
+      <line x1="22" y1="0" x2="22" y2="34" stroke="#b88310" stroke-width="1" />
+      <rect x="14" y="9" width="16" height="16" rx="3" fill="none" stroke="#b88310" stroke-width="1" />
+    </g>
+
+    <!-- Value Badge -->
+    <g transform="translate(50, 205)">
+      <text font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="44" font-weight="900" fill="#ffffff" letter-spacing="-1">$500</text>
+      <text x="125" y="-12" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" fill="#e2e8f0">PROMOTIONAL OFFER</text>
+      <text x="125" y="8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500" fill="#93c5fd">Eligible for In-Store &amp; Online Shopping</text>
+    </g>
+
+    <!-- Decorative Card Number Dots -->
+    <g transform="translate(50, 248)" fill="#ffffff" fill-opacity="0.4" font-family="monospace" font-size="13" letter-spacing="3">
+      <text y="0">••••  ••••  ••••  7510</text>
+    </g>
+  </g>
+</svg>

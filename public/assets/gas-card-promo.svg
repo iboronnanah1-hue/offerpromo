@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="gasBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#065f46" />
+      <stop offset="50%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+    <linearGradient id="gasGleam" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.25" />
+      <stop offset="60%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+    <filter id="cardShadowGas" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#022c22" flood-opacity="0.32" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="600" height="360" rx="16" fill="#f0fdf4" />
+  
+  <!-- Subtle pattern dots -->
+  <g opacity="0.08" fill="#059669">
+    <circle cx="40" cy="40" r="3" />
+    <circle cx="80" cy="40" r="3" />
+    <circle cx="120" cy="40" r="3" />
+    <circle cx="480" cy="40" r="3" />
+    <circle cx="520" cy="40" r="3" />
+    <circle cx="560" cy="40" r="3" />
+    <circle cx="40" cy="320" r="3" />
+    <circle cx="80" cy="320" r="3" />
+    <circle cx="520" cy="320" r="3" />
+    <circle cx="560" cy="320" r="3" />
+  </g>
+
+  <!-- Card Container -->
+  <g transform="translate(60, 40)" filter="url(#cardShadowGas)">
+    <rect width="480" height="280" rx="20" fill="url(#gasBg)" />
+    <rect width="480" height="280" rx="20" fill="url(#gasGleam)" />
+    <rect width="480" height="280" rx="20" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.35" />
+
+    <!-- Gas Fuel Station Header -->
+    <g transform="translate(50, 48)">
+      <!-- Fuel Pump Icon -->
+      <g fill="#ffffff">
+        <path d="M4 2A2 2 0 0 0 2 4v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm2 3h6v5H6V5zm12 3a1 1 0 0 0-1 1v4a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v2a1 1 0 0 1-2 0v-1h-1a2 2 0 0 0-2 2v1a1 1 0 0 0 2 0h1v1a3 3 0 0 0 6 0v-4a4 4 0 0 0-4-4h-1V9a3 3 0 0 0-3-3z" transform="scale(1.2)" />
+      </g>
+      <text x="36" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="800" fill="#ffffff" letter-spacing="0.5">GAS &amp; FUEL</text>
+      <text x="36" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#a7f3d0" letter-spacing="2">UNIVERSAL PUMP CARD</text>
+    </g>
+
+    <!-- Gift Card Pill Tag -->
+    <g transform="translate(330, 40)">
+      <rect width="105" height="30" rx="15" fill="#ffffff" fill-opacity="0.22" />
+      <text x="52" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="1">GIFT CARD</text>
+    </g>
+
+    <!-- EMV Chip Accent -->
+    <g transform="translate(50, 115)">
+      <rect width="44" height="34" rx="6" fill="#fde68a" stroke="#d97706" stroke-width="1.5" />
+      <line x1="0" y1="17" x2="44" y2="17" stroke="#b45309" stroke-width="1" />
+      <line x1="22" y1="0" x2="22" y2="34" stroke="#b45309" stroke-width="1" />
+      <rect x="14" y="9" width="16" height="16" rx="3" fill="none" stroke="#b45309" stroke-width="1" />
+    </g>
+
+    <!-- Value Badge -->
+    <g transform="translate(50, 205)">
+      <text font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="42" font-weight="900" fill="#ffffff" letter-spacing="-1">$500</text>
+      <text x="125" y="-12" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" fill="#ecfdf5">FUEL PROMOTION</text>
+      <text x="125" y="8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500" fill="#a7f3d0">Accepted at Major Gas Station Retailers</text>
+    </g>
+
+    <!-- Decorative Card Number Dots -->
+    <g transform="translate(50, 248)" fill="#ffffff" fill-opacity="0.4" font-family="monospace" font-size="13" letter-spacing="3">
+      <text y="0">••••  ••••  ••••  7476</text>
+    </g>
+  </g>
+</svg>
