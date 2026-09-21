@@ -1,65 +1,147 @@
-import React from 'react';
-import { ArrowDown, CheckCircle2, Shield, Smartphone } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowDown, HelpCircle } from 'lucide-react';
 
 interface HeroProps {
   onScrollToOffers: () => void;
+  onScrollToHowItWorks: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onScrollToOffers }) => {
+export const Hero: React.FC<HeroProps> = ({ onScrollToOffers, onScrollToHowItWorks }) => {
+  const [walmartSrcIndex, setWalmartSrcIndex] = useState(0);
+  const [ultaSrcIndex, setUltaSrcIndex] = useState(0);
+
+  const walmartCandidates = [
+    '/assets/walmart-promo.png',
+    '/assets/walmart.png',
+    '/assets/walmart-promo.jpg',
+    '/assets/walmart.jpg',
+    '/assets/walmart-promo.svg',
+    '/walmart-promo.png',
+    '/walmart.png',
+  ];
+
+  const ultaCandidates = [
+    '/assets/ulta-promo.png',
+    '/assets/ulta.png',
+    '/assets/ulta-promo.jpg',
+    '/assets/ulta.jpg',
+    '/assets/ulta-promo.svg',
+    '/ulta-promo.png',
+    '/ulta.png',
+  ];
+
+  const walmartSrc = walmartCandidates[walmartSrcIndex] || walmartCandidates[walmartCandidates.length - 1];
+  const ultaSrc = ultaCandidates[ultaSrcIndex] || ultaCandidates[ultaCandidates.length - 1];
+
   return (
-    <section className="relative bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800 text-white pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24 overflow-hidden">
-      {/* Subtle background geometry / ambient contrast */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
-        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-blue-500 blur-3xl" />
-        <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-slate-500 blur-3xl" />
-      </div>
+    <section className="bg-white border-b border-[#E2E8F0] pt-8 pb-12 sm:pt-12 sm:pb-16 lg:pt-14 lg:pb-18">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* Left Column: Headline, Description, CTAs */}
+          <div className="lg:col-span-7 flex flex-col items-start text-left">
+            {/* Small Neutral Badge */}
+            <span className="inline-block text-xs font-semibold tracking-wider text-[#475569] uppercase bg-[#F8FAFC] border border-[#E2E8F0] px-3 py-1 rounded-full mb-3.5">
+              Consumer Promotions
+            </span>
 
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Verification Pill */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-slate-200 text-xs sm:text-sm font-medium mb-6 backdrop-blur-xs">
-          <Shield className="w-3.5 h-3.5 text-blue-400" />
-          <span>Curated Promotional Opportunities for U.S. Residents</span>
-        </div>
+            {/* Exact Headline */}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F172A] tracking-tight leading-tight sm:leading-tight">
+              Explore Available Gift Card Offers
+            </h1>
 
-        {/* Headline */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
-          Explore Current Gift Card Offers
-        </h1>
+            {/* Exact Supporting Headline */}
+            <p className="mt-4 sm:mt-5 text-base sm:text-lg text-[#334155] leading-relaxed max-w-xl">
+              Discover promotional gift-card opportunities from participating brands and review the requirements for each offer before choosing one.
+            </p>
 
-        {/* Subheadline */}
-        <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed">
-          Take a look at the promotional offers available below and choose the one that best fits your needs.
-        </p>
+            {/* CTAs: Primary "Explore Offers" + Subtle secondary "How It Works" */}
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto">
+              <button
+                type="button"
+                onClick={onScrollToOffers}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold text-base transition-colors shadow-xs cursor-pointer"
+              >
+                <span>Explore Offers</span>
+                <ArrowDown className="w-4 h-4" />
+              </button>
 
-        {/* Honest supporting message */}
-        <p className="mt-3 text-xs sm:text-sm text-slate-400 font-medium">
-          Offer availability, eligibility requirements and participation steps may vary.
-        </p>
+              <button
+                type="button"
+                onClick={onScrollToHowItWorks}
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-lg text-sm font-medium text-[#475569] hover:text-[#0F172A] hover:bg-[#F8FAFC] transition-colors cursor-pointer"
+              >
+                <HelpCircle className="w-4 h-4 text-[#64748B]" />
+                <span>How It Works</span>
+              </button>
+            </div>
 
-        {/* CTA Button */}
-        <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button
-            onClick={onScrollToOffers}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-semibold text-base shadow-lg shadow-blue-900/30 transition-all transform hover:-translate-y-0.5 cursor-pointer"
-          >
-            <span>View Available Offers</span>
-            <ArrowDown className="w-4 h-4" />
-          </button>
-        </div>
-
-        {/* Trust Badges Bar */}
-        <div className="mt-10 pt-8 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto text-left sm:text-center text-xs sm:text-sm text-slate-400">
-          <div className="flex items-center sm:justify-center gap-2">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-            <span>Independent Reviews</span>
+            {/* Exact Smaller Supporting Message */}
+            <p className="mt-4 text-xs sm:text-sm text-[#64748B]">
+              Eligibility, availability, and participation requirements vary by offer.
+            </p>
           </div>
-          <div className="flex items-center sm:justify-center gap-2">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-            <span>Direct Participation Links</span>
-          </div>
-          <div className="flex items-center sm:justify-center gap-2">
-            <Smartphone className="w-4 h-4 text-blue-400 shrink-0" />
-            <span>Device-Specific Options</span>
+
+          {/* Right Column: Professional promotional image/card composition */}
+          <div className="lg:col-span-5 w-full">
+            <div className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-2xl p-4 sm:p-5 shadow-xs">
+              <div className="flex items-center justify-between text-xs font-semibold text-[#475569] uppercase tracking-wider mb-3 px-1">
+                <span>Featured Promotions</span>
+                <span className="text-[11px] font-medium text-[#64748B] normal-case bg-white border border-[#E2E8F0] px-2 py-0.5 rounded-full">
+                  Android Intended
+                </span>
+              </div>
+              <div className="space-y-3">
+                {/* Walmart Preview Card */}
+                <div className="bg-white rounded-xl border border-[#E2E8F0] p-2.5 shadow-xs overflow-hidden">
+                  <div className="aspect-[16/10] w-full bg-[#F8FAFC] rounded-lg overflow-hidden flex items-center justify-center">
+                    <img
+                      src={walmartSrc}
+                      alt="Walmart Gift Card promotional artwork"
+                      onError={() => {
+                        if (walmartSrcIndex < walmartCandidates.length - 1) {
+                          setWalmartSrcIndex((prev) => prev + 1);
+                        }
+                      }}
+                      className="w-full h-full object-contain"
+                      loading="eager"
+                    />
+                  </div>
+                  <div className="mt-2.5 px-1 flex items-center justify-between">
+                    <span className="text-xs sm:text-sm font-semibold text-[#0F172A]">
+                      Walmart Gift Card Promotion
+                    </span>
+                    <span className="text-[11px] font-medium text-[#2563EB] bg-blue-50 px-2 py-0.5 rounded border border-blue-100">
+                      Offer Available
+                    </span>
+                  </div>
+                </div>
+
+                {/* Ulta Preview Card */}
+                <div className="bg-white rounded-xl border border-[#E2E8F0] p-2.5 shadow-xs overflow-hidden">
+                  <div className="aspect-[16/10] w-full bg-[#F8FAFC] rounded-lg overflow-hidden flex items-center justify-center">
+                    <img
+                      src={ultaSrc}
+                      alt="Ulta Beauty Gift Card promotional artwork"
+                      onError={() => {
+                        if (ultaSrcIndex < ultaCandidates.length - 1) {
+                          setUltaSrcIndex((prev) => prev + 1);
+                        }
+                      }}
+                      className="w-full h-full object-contain"
+                      loading="eager"
+                    />
+                  </div>
+                  <div className="mt-2.5 px-1 flex items-center justify-between">
+                    <span className="text-xs sm:text-sm font-semibold text-[#0F172A]">
+                      Ulta Beauty Gift Card Promotion
+                    </span>
+                    <span className="text-[11px] font-medium text-[#2563EB] bg-blue-50 px-2 py-0.5 rounded border border-blue-100">
+                      Offer Available
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

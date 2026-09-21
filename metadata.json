@@ -1,6 +1,6 @@
 {
   "name": "Consumer Offers",
-  "description": "Explore current consumer promotional gift card offers and review participation requirements.",
+  "description": "Explore available promotional gift-card offers, review eligibility requirements, and choose an offer to learn more.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

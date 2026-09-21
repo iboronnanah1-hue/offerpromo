@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, ShieldCheck } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { ModalType } from '../types';
 
 interface HeaderProps {
@@ -11,10 +11,14 @@ export const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    targetId: string
+    targetId?: string
   ) => {
     e.preventDefault();
     setMobileMenuOpen(false);
+    if (!targetId || targetId === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
     const element = document.getElementById(targetId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -22,70 +26,74 @@ export const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs">
+    <header className="sticky top-0 z-40 bg-white border-b border-[#E2E8F0] shadow-xs">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-18">
-          {/* Logo / Site Brand */}
+        <div className="flex items-center justify-between h-16">
+          {/* Logo / Brand Name */}
           <div className="flex items-center gap-3">
             <a
               href="#"
-              className="flex items-center gap-2.5 text-slate-900 hover:text-slate-700 transition-colors"
+              onClick={(e) => handleNavClick(e, 'home')}
+              className="flex items-center gap-2.5 text-[#0F172A] hover:text-[#334155] transition-colors"
             >
-              <div className="w-9 h-9 rounded-lg bg-slate-900 flex items-center justify-center text-white shadow-xs">
-                <ShieldCheck className="w-5 h-5 text-blue-400" />
+              <div className="w-8 h-8 rounded-lg bg-[#0F172A] flex items-center justify-center text-white font-bold text-sm tracking-tight shadow-xs">
+                CO
               </div>
-              <div className="flex flex-col">
-                <span className="font-bold text-lg sm:text-xl tracking-tight text-slate-900">
-                  Consumer Offers
-                </span>
-                <span className="text-[11px] font-medium text-slate-500 uppercase tracking-wider hidden sm:inline-block">
-                  Independent Promotional Portal
-                </span>
-              </div>
+              <span className="font-bold text-lg sm:text-xl tracking-tight text-[#0F172A]">
+                Consumer Offers
+              </span>
             </a>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation: Home, Offers, How It Works, Terms, Privacy */}
           <nav className="hidden md:flex items-center gap-1 sm:gap-2">
             <a
-              href="#how-it-works"
-              onClick={(e) => handleNavClick(e, 'how-it-works')}
-              className="px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+              href="#"
+              onClick={(e) => handleNavClick(e, 'home')}
+              className="px-3 py-1.5 rounded-md text-sm font-medium text-[#475569] hover:text-[#0F172A] hover:bg-[#F8FAFC] transition-colors"
             >
-              How It Works
+              Home
             </a>
             <a
               href="#offers"
               onClick={(e) => handleNavClick(e, 'offers')}
-              className="px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+              className="px-3 py-1.5 rounded-md text-sm font-medium text-[#475569] hover:text-[#0F172A] hover:bg-[#F8FAFC] transition-colors"
             >
               Offers
             </a>
+            <a
+              href="#how-it-works"
+              onClick={(e) => handleNavClick(e, 'how-it-works')}
+              className="px-3 py-1.5 rounded-md text-sm font-medium text-[#475569] hover:text-[#0F172A] hover:bg-[#F8FAFC] transition-colors"
+            >
+              How It Works
+            </a>
             <button
               onClick={() => onOpenModal('terms')}
-              className="px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer"
+              className="px-3 py-1.5 rounded-md text-sm font-medium text-[#475569] hover:text-[#0F172A] hover:bg-[#F8FAFC] transition-colors cursor-pointer"
             >
               Terms
             </button>
             <button
               onClick={() => onOpenModal('privacy')}
-              className="px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer"
+              className="px-3 py-1.5 rounded-md text-sm font-medium text-[#475569] hover:text-[#0F172A] hover:bg-[#F8FAFC] transition-colors cursor-pointer"
             >
               Privacy
             </button>
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Toggle Button */}
           <div className="flex md:hidden">
             <button
+              type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-hidden focus:ring-2 focus:ring-slate-300"
+              className="p-2 rounded-lg text-[#475569] hover:text-[#0F172A] hover:bg-[#F8FAFC] focus:outline-hidden focus:ring-2 focus:ring-[#2563EB]"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? (
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5" />
               ) : (
-                <Menu className="w-6 h-6" />
+                <Menu className="w-5 h-5" />
               )}
             </button>
           </div>
@@ -94,38 +102,45 @@ export const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-slate-200 bg-white px-4 pt-2 pb-4 space-y-1 shadow-lg">
+        <div className="md:hidden border-t border-[#E2E8F0] bg-white px-4 pt-2 pb-4 space-y-1 shadow-md">
           <a
-            href="#how-it-works"
-            onClick={(e) => handleNavClick(e, 'how-it-works')}
-            className="block px-3 py-2.5 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+            href="#"
+            onClick={(e) => handleNavClick(e, 'home')}
+            className="block px-3 py-2 rounded-md text-base font-medium text-[#0F172A] hover:bg-[#F8FAFC]"
           >
-            How It Works
+            Home
           </a>
           <a
             href="#offers"
             onClick={(e) => handleNavClick(e, 'offers')}
-            className="block px-3 py-2.5 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+            className="block px-3 py-2 rounded-md text-base font-medium text-[#0F172A] hover:bg-[#F8FAFC]"
           >
             Offers
+          </a>
+          <a
+            href="#how-it-works"
+            onClick={(e) => handleNavClick(e, 'how-it-works')}
+            className="block px-3 py-2 rounded-md text-base font-medium text-[#0F172A] hover:bg-[#F8FAFC]"
+          >
+            How It Works
           </a>
           <button
             onClick={() => {
               setMobileMenuOpen(false);
               onOpenModal('terms');
             }}
-            className="w-full text-left block px-3 py-2.5 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900 cursor-pointer"
+            className="w-full text-left block px-3 py-2 rounded-md text-base font-medium text-[#0F172A] hover:bg-[#F8FAFC] cursor-pointer"
           >
-            Terms of Service
+            Terms
           </button>
           <button
             onClick={() => {
               setMobileMenuOpen(false);
               onOpenModal('privacy');
             }}
-            className="w-full text-left block px-3 py-2.5 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900 cursor-pointer"
+            className="w-full text-left block px-3 py-2 rounded-md text-base font-medium text-[#0F172A] hover:bg-[#F8FAFC] cursor-pointer"
           >
-            Privacy Policy
+            Privacy
           </button>
         </div>
       )}
