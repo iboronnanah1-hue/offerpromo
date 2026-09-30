@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 440" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC" />
+      <stop offset="100%" stop-color="#EEF2F6" />
+    </linearGradient>
+
+    <!-- Card Gradient -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E2B4B" />
+      <stop offset="60%" stop-color="#143A66" />
+      <stop offset="100%" stop-color="#091D33" />
+    </linearGradient>
+
+    <!-- Gold Accent Gradient -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFBF00" />
+      <stop offset="50%" stop-color="#FFD700" />
+      <stop offset="100%" stop-color="#E5A600" />
+    </linearGradient>
+
+    <!-- Card Gleam / Sheen -->
+    <linearGradient id="cardSheen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.22" />
+      <stop offset="45%" stop-color="#ffffff" stop-opacity="0.06" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Shadow -->
+    <filter id="boxShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.18" />
+    </filter>
+  </defs>
+
+  <!-- Outer Canvas -->
+  <rect width="680" height="440" rx="20" fill="url(#bgGrad)" stroke="#E2E8F0" stroke-width="2" />
+
+  <!-- Top Banner: Consumer Test Connect header -->
+  <g transform="translate(30, 24)">
+    <rect width="620" height="52" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5" />
+    <!-- CTC Symbol -->
+    <circle cx="28" cy="26" r="14" fill="#581C87" />
+    <path d="M22 26 L27 31 L35 21" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+    
+    <text x="52" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="800" fill="#0F172A" letter-spacing="1">CONSUMER TEST CONNECT</text>
+    
+    <rect x="475" y="14" width="132" height="24" rx="12" fill="#F1F5F9" />
+    <text x="541" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#64748B" text-anchor="middle">OPPORTUNITY PREVIEW</text>
+  </g>
+
+  <!-- Main Promotional Card -->
+  <g transform="translate(50, 100)" filter="url(#boxShadow)">
+    <!-- Base Card Body -->
+    <rect width="580" height="290" rx="20" fill="url(#cardGrad)" />
+    <!-- Gleam Overlay -->
+    <rect width="580" height="290" rx="20" fill="url(#cardSheen)" />
+    <!-- Border -->
+    <rect width="580" height="290" rx="20" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.25" />
+
+    <!-- Top Ribbon on Card -->
+    <rect x="0" y="30" width="580" height="4" fill="url(#goldGrad)" opacity="0.9" />
+
+    <!-- Card Brand Emblem / Header: Jersey Mike's style crest -->
+    <g transform="translate(40, 48)">
+      <!-- Red Oval Backing -->
+      <ellipse cx="64" cy="38" rx="60" ry="34" fill="#C91F28" stroke="#FFFFFF" stroke-width="2.5" />
+      <text x="64" y="34" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="900" fill="#FFFFFF" text-anchor="middle" font-style="italic" letter-spacing="0.5">Jersey Mike's</text>
+      <text x="64" y="52" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800" fill="#FFC72C" text-anchor="middle" letter-spacing="2">SUBS</text>
+    </g>
+
+    <!-- Denomination Display: $100 -->
+    <g transform="translate(360, 48)">
+      <rect x="0" y="4" width="175" height="68" rx="14" fill="#000000" fill-opacity="0.25" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.3" />
+      <text x="18" y="50" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="900" fill="#FFD700" letter-spacing="-1">$100</text>
+      <text x="126" y="36" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF" opacity="0.85">GIFT</text>
+      <text x="126" y="52" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF" opacity="0.85">CARD</text>
+    </g>
+
+    <!-- Sub Sandwich Silhouette Graphic on Card -->
+    <g transform="translate(42, 142)">
+      <!-- Sandwich Bread Top -->
+      <path d="M 0 35 C 20 10, 180 10, 200 35 C 190 40, 10 40, 0 35 Z" fill="#E5A600" opacity="0.9" />
+      <!-- Lettuce / Fillings -->
+      <path d="M 5 36 Q 25 46, 50 36 Q 75 46, 100 36 Q 125 46, 150 36 Q 175 46, 195 36" stroke="#22C55E" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.95" />
+      <!-- Cold Cuts / Tomatoes -->
+      <path d="M 8 42 Q 40 48, 80 42 Q 120 48, 160 42 Q 185 46, 192 42" stroke="#DC2626" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.9" />
+      <!-- Sandwich Bread Bottom -->
+      <path d="M 0 45 C 15 62, 185 62, 200 45 Z" fill="#D97706" opacity="0.95" />
+      
+      <text x="218" y="44" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">AUTHENTIC SUB RESTAURANT</text>
+      <text x="218" y="66" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="500" fill="#93C5FD">Participating U.S. Locations</text>
+    </g>
+
+    <!-- Magnetic / Security Chip Graphic -->
+    <g transform="translate(44, 225)">
+      <rect width="44" height="34" rx="6" fill="url(#goldGrad)" stroke="#B45309" stroke-width="1" />
+      <line x1="14" y1="0" x2="14" y2="34" stroke="#B45309" stroke-width="0.8" />
+      <line x1="30" y1="0" x2="30" y2="34" stroke="#B45309" stroke-width="0.8" />
+      <line x1="0" y1="17" x2="44" y2="17" stroke="#B45309" stroke-width="0.8" />
+    </g>
+
+    <!-- Cardholder / Opportunity Text -->
+    <g transform="translate(104, 234)">
+      <text x="0" y="10" font-family="system-ui, -apple-system, monospace" font-size="11" font-weight="600" fill="#CBD5E1" letter-spacing="1.5">PROMOTIONAL PARTICIPANT</text>
+      <text x="0" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF" letter-spacing="2">ELIGIBLE U.S. RECIPIENT</text>
+    </g>
+
+    <!-- Android Device Badge -->
+    <g transform="translate(440, 230)">
+      <rect width="98" height="28" rx="14" fill="#581C87" stroke="#9333EA" stroke-width="1" />
+      <text x="49" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">ANDROID ONLY</text>
+    </g>
+  </g>
+</svg>

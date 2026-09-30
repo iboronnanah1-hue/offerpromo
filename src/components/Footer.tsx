@@ -11,13 +11,18 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-800">
           {/* Logo / Brand Name */}
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white font-bold text-sm tracking-tight">
-              CO
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-linear-to-br from-[#581C87] to-[#7E22CE] flex items-center justify-center text-white font-extrabold text-sm tracking-tight">
+              OP
             </div>
-            <span className="font-bold text-lg text-white tracking-tight">
-              Consumer Offers
-            </span>
+            <div>
+              <span className="font-extrabold text-lg text-white tracking-tight">
+                Offer<span className="text-purple-400">Promo</span>
+              </span>
+              <p className="text-xs text-slate-400">
+                Discover simple promotional opportunities.
+              </p>
+            </div>
           </div>
 
           {/* Footer Navigation */}
@@ -58,9 +63,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
 
         {/* Footer Notes & Copyright */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 text-center sm:text-left">
-          <p>© 2026 Consumer Offers. All rights reserved.</p>
+          <p>© 2026 OfferPromo. All rights reserved.</p>
           <p>
-            An independent consumer promotional landing page.
+            An independent consumer promotional information and review website.
           </p>
         </div>
       </div>

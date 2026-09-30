@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sparkles } from 'lucide-react';
 import { ModalType } from '../types';
 
 interface HeaderProps {
@@ -15,7 +15,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
   ) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-    if (!targetId || targetId === 'home') {
+    if (!targetId || targetId === 'top') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
@@ -26,68 +26,83 @@ export const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-white border-b border-[#E2E8F0] shadow-xs">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#E2E8F0] shadow-xs">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16 sm:h-18">
           {/* Logo / Brand Name */}
           <div className="flex items-center gap-3">
             <a
               href="#"
-              onClick={(e) => handleNavClick(e, 'home')}
-              className="flex items-center gap-2.5 text-[#0F172A] hover:text-[#334155] transition-colors"
+              onClick={(e) => handleNavClick(e, 'top')}
+              className="flex items-center gap-2.5 text-[#0F172A] group transition-colors"
+              aria-label="OfferPromo Home"
             >
-              <div className="w-8 h-8 rounded-lg bg-[#0F172A] flex items-center justify-center text-white font-bold text-sm tracking-tight shadow-xs">
-                CO
+              <div className="w-9 h-9 rounded-xl bg-linear-to-br from-[#581C87] to-[#3B0764] flex items-center justify-center text-white font-extrabold text-sm tracking-tight shadow-xs">
+                OP
               </div>
-              <span className="font-bold text-lg sm:text-xl tracking-tight text-[#0F172A]">
-                Consumer Offers
-              </span>
+              <div className="flex flex-col">
+                <span className="font-extrabold text-lg sm:text-xl tracking-tight text-[#0F172A] leading-tight">
+                  Offer<span className="text-[#6B21A8]">Promo</span>
+                </span>
+                <span className="text-[11px] font-medium text-[#64748B] hidden sm:block tracking-normal">
+                  Discover simple promotional opportunities.
+                </span>
+              </div>
             </a>
           </div>
 
-          {/* Desktop Navigation: Home, Offers, How It Works, Terms, Privacy */}
-          <nav className="hidden md:flex items-center gap-1 sm:gap-2">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-1 lg:gap-2">
             <a
-              href="#"
-              onClick={(e) => handleNavClick(e, 'home')}
-              className="px-3 py-1.5 rounded-md text-sm font-medium text-[#475569] hover:text-[#0F172A] hover:bg-[#F8FAFC] transition-colors"
+              href="#opportunity"
+              onClick={(e) => handleNavClick(e, 'opportunity')}
+              className="px-3 py-1.5 rounded-lg text-sm font-medium text-[#475569] hover:text-[#0F172A] hover:bg-[#F8FAFC] transition-colors"
             >
-              Home
+              The Opportunity
             </a>
             <a
-              href="#offers"
-              onClick={(e) => handleNavClick(e, 'offers')}
-              className="px-3 py-1.5 rounded-md text-sm font-medium text-[#475569] hover:text-[#0F172A] hover:bg-[#F8FAFC] transition-colors"
+              href="#why-jersey-mikes"
+              onClick={(e) => handleNavClick(e, 'why-jersey-mikes')}
+              className="px-3 py-1.5 rounded-lg text-sm font-medium text-[#475569] hover:text-[#0F172A] hover:bg-[#F8FAFC] transition-colors"
             >
-              Offers
+              Why Jersey Mike&apos;s
             </a>
             <a
-              href="#how-it-works"
-              onClick={(e) => handleNavClick(e, 'how-it-works')}
-              className="px-3 py-1.5 rounded-md text-sm font-medium text-[#475569] hover:text-[#0F172A] hover:bg-[#F8FAFC] transition-colors"
+              href="#how-to-check"
+              onClick={(e) => handleNavClick(e, 'how-to-check')}
+              className="px-3 py-1.5 rounded-lg text-sm font-medium text-[#475569] hover:text-[#0F172A] hover:bg-[#F8FAFC] transition-colors"
             >
-              How It Works
+              How to Check
+            </a>
+            <a
+              href="#eligibility"
+              onClick={(e) => handleNavClick(e, 'eligibility')}
+              className="px-3 py-1.5 rounded-lg text-sm font-medium text-[#475569] hover:text-[#0F172A] hover:bg-[#F8FAFC] transition-colors"
+            >
+              Eligibility
             </a>
             <button
+              type="button"
               onClick={() => onOpenModal('terms')}
-              className="px-3 py-1.5 rounded-md text-sm font-medium text-[#475569] hover:text-[#0F172A] hover:bg-[#F8FAFC] transition-colors cursor-pointer"
+              className="px-3 py-1.5 rounded-lg text-sm font-medium text-[#475569] hover:text-[#0F172A] hover:bg-[#F8FAFC] transition-colors cursor-pointer"
             >
               Terms
             </button>
             <button
+              type="button"
               onClick={() => onOpenModal('privacy')}
-              className="px-3 py-1.5 rounded-md text-sm font-medium text-[#475569] hover:text-[#0F172A] hover:bg-[#F8FAFC] transition-colors cursor-pointer"
+              className="px-3 py-1.5 rounded-lg text-sm font-medium text-[#475569] hover:text-[#0F172A] hover:bg-[#F8FAFC] transition-colors cursor-pointer"
             >
               Privacy
             </button>
           </nav>
 
-          {/* Mobile Menu Toggle Button */}
+          {/* Mobile Menu Button */}
           <div className="flex md:hidden">
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-[#475569] hover:text-[#0F172A] hover:bg-[#F8FAFC] focus:outline-hidden focus:ring-2 focus:ring-[#2563EB]"
+              className="p-2 rounded-lg text-[#475569] hover:text-[#0F172A] hover:bg-[#F8FAFC] focus:outline-hidden focus:ring-2 focus:ring-[#581C87]"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? (
@@ -102,45 +117,58 @@ export const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-[#E2E8F0] bg-white px-4 pt-2 pb-4 space-y-1 shadow-md">
+        <div className="md:hidden border-t border-[#E2E8F0] bg-white px-4 pt-2.5 pb-4 space-y-1 shadow-lg">
+          <div className="px-3 py-1.5 mb-1 text-xs text-[#64748B] border-b border-slate-100 flex items-center gap-1.5">
+            <Sparkles className="w-3.5 h-3.5 text-[#6B21A8]" />
+            <span>Discover simple promotional opportunities.</span>
+          </div>
           <a
-            href="#"
-            onClick={(e) => handleNavClick(e, 'home')}
-            className="block px-3 py-2 rounded-md text-base font-medium text-[#0F172A] hover:bg-[#F8FAFC]"
+            href="#opportunity"
+            onClick={(e) => handleNavClick(e, 'opportunity')}
+            className="block px-3 py-2 rounded-lg text-sm font-medium text-[#0F172A] hover:bg-[#F8FAFC]"
           >
-            Home
+            The Opportunity
           </a>
           <a
-            href="#offers"
-            onClick={(e) => handleNavClick(e, 'offers')}
-            className="block px-3 py-2 rounded-md text-base font-medium text-[#0F172A] hover:bg-[#F8FAFC]"
+            href="#why-jersey-mikes"
+            onClick={(e) => handleNavClick(e, 'why-jersey-mikes')}
+            className="block px-3 py-2 rounded-lg text-sm font-medium text-[#0F172A] hover:bg-[#F8FAFC]"
           >
-            Offers
+            Why Jersey Mike&apos;s
           </a>
           <a
-            href="#how-it-works"
-            onClick={(e) => handleNavClick(e, 'how-it-works')}
-            className="block px-3 py-2 rounded-md text-base font-medium text-[#0F172A] hover:bg-[#F8FAFC]"
+            href="#how-to-check"
+            onClick={(e) => handleNavClick(e, 'how-to-check')}
+            className="block px-3 py-2 rounded-lg text-sm font-medium text-[#0F172A] hover:bg-[#F8FAFC]"
           >
-            How It Works
+            How to Check
+          </a>
+          <a
+            href="#eligibility"
+            onClick={(e) => handleNavClick(e, 'eligibility')}
+            className="block px-3 py-2 rounded-lg text-sm font-medium text-[#0F172A] hover:bg-[#F8FAFC]"
+          >
+            Eligibility
           </a>
           <button
+            type="button"
             onClick={() => {
               setMobileMenuOpen(false);
               onOpenModal('terms');
             }}
-            className="w-full text-left block px-3 py-2 rounded-md text-base font-medium text-[#0F172A] hover:bg-[#F8FAFC] cursor-pointer"
+            className="w-full text-left block px-3 py-2 rounded-lg text-sm font-medium text-[#0F172A] hover:bg-[#F8FAFC] cursor-pointer"
           >
-            Terms
+            Terms of Use
           </button>
           <button
+            type="button"
             onClick={() => {
               setMobileMenuOpen(false);
               onOpenModal('privacy');
             }}
-            className="w-full text-left block px-3 py-2 rounded-md text-base font-medium text-[#0F172A] hover:bg-[#F8FAFC] cursor-pointer"
+            className="w-full text-left block px-3 py-2 rounded-lg text-sm font-medium text-[#0F172A] hover:bg-[#F8FAFC] cursor-pointer"
           >
-            Privacy
+            Privacy Policy
           </button>
         </div>
       )}

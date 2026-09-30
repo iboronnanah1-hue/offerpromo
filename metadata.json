@@ -1,6 +1,6 @@
 {
   "name": "Consumer Offers",
-  "description": "Explore available promotional gift-card offers, review eligibility requirements, and choose an offer to learn more.",
+  "description": "Explore a Jersey Mike's gift-card opportunity for eligible Android users in the United States. Review the details and see whether you qualify.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
